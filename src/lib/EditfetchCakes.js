@@ -3,20 +3,17 @@ const EditfetchCakes = async (AdminCakes, setAdminCCResponse) => {
   // eslint-disable-next-line
   ClonedCAC.map((CAC, i) => {
     CAC.id = i;
-  }); //61d95f0039a33573b3255962
-  fetch("https://api.jsonbin.io/v3/b/6201c5ec69b72261be542a7a", {
+  });
+  fetch(process.env.REACT_APP_NOT_SECRET_CODE, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "X-Bin-Versioning": "false",
-      "X-Master-Key":
-        "$2b$10$3UaB99VS1SOgUt.AEkuDdOewkf6QIpWd1O8YM4BB9wgHlDX9Fvhg.",
     },
-    body: JSON.stringify(ClonedCAC),
+    body: JSON.stringify({ 2: ClonedCAC }),
   })
     .then((response) => {
       setAdminCCResponse(["block", "Cakes Updating...", "block"]);
-      return response.json();
+      return response;
     })
     .then((data) => {
       if (typeof data === "object") {
