@@ -7,7 +7,7 @@ const fetchCakes = async () => {
     },
   });
   const data = await res.json(res);
-  return data["2"];
+  return data;
 };
 
 export default fetchCakes;
